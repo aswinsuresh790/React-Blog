@@ -1,9 +1,10 @@
-import {useState} from "react";
+
 import { firestore } from "./config";
+import Hooks from "../Hooks";
 function CreatePost(){  
-const[title,setTitle]=useState()
-const[subtitle,setSubtitle]=useState()
-const[content,setContent]=useState()
+const title=Hooks('')
+const subtitle=Hooks('')
+const content=Hooks('')
 function handleSubmit(e){
     e.preventDefault();
 console.log("Title",title);
@@ -11,9 +12,9 @@ console.log("Subtitle",subtitle);
 console.log("Content",content);
 
 firestore.collection("Posts").add({
-    title,
-    subtitle,
-    content,
+    title:title.value,
+    subtitle:subtitle.value,
+    content:content.value,
     createAt:new Date() 
 }
 )
@@ -29,14 +30,14 @@ return(
 <div className="form-field">
 <label >
     Title</label>
-    <div><input type="text" value={title} onChange={(e)=>setTitle(e.target.value)} />
+    <div><input type="text" {...title} />
     </div>
     </div>
     <div className="form-field">
 <label >
     SubTitle </label>
     <div>
-    <input type="text" value={subtitle} onChange={(e)=>setSubtitle(e.target.value)} />
+    <input type="text" {...subtitle} />
     </div>
     </div>
     <div className="form-field">
@@ -44,9 +45,8 @@ return(
     Content 
     </label>
     <div>
-     <textarea vlaue={content} onChange={(e)=>
-        setContent(e.target.value)
-    }>
+     <textarea {...content}
+    >
         
         
 

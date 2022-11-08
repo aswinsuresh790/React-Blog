@@ -63,3 +63,18 @@
   height: 40px;
   border: white solid 1px;
 }
+.post{
+  width:800px;
+  height: auto;
+  border: #e7e7e7 solid 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+margin-bottom: 12px;
+
+}
+.post div{
+  
+}
